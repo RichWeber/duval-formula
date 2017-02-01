@@ -1,0 +1,21 @@
+{
+  "name": "richweber/duval-calculator",
+  "description": "Duval calculator",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "RichWeber",
+      "email": "rbagatyi@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "~7.1.0",
+    "phpunit/phpunit": "~5.7.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "richweber\\duval\\calculator\\": "src"
+    }
+  }
+}
