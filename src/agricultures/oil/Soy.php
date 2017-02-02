@@ -5,17 +5,21 @@ namespace richweber\duval\calculator\agricultures\oil;
 use richweber\duval\calculator\agricultures\Culture;
 use richweber\duval\calculator\agricultures\CultureException;
 
+/**
+ * Class Soy
+ * @package richweber\duval\calculator\agricultures\oil
+ */
 class Soy implements Culture
 {
     /**
      * @var float
      */
-    private $_trashPercentageNorm;
+    protected $trashPercentageNorm;
 
     /**
      * @var float
      */
-    private $_humidityPercentageNorm;
+    protected $humidityPercentageNorm;
 
     /**
      * Culture constructor.
@@ -35,8 +39,8 @@ class Soy implements Culture
             throw new CultureException('Invalid trash norm');
         }
 
-        $this->_humidityPercentageNorm = $humidityPercentageNorm;
-        $this->_trashPercentageNorm = $trashPercentageNorm;
+        $this->humidityPercentageNorm = $humidityPercentageNorm;
+        $this->trashPercentageNorm = $trashPercentageNorm;
     }
 
     /**
@@ -45,7 +49,7 @@ class Soy implements Culture
      */
     public function getTrashPercentageNorm() : float
     {
-        return $this->_trashPercentageNorm;
+        return $this->trashPercentageNorm;
     }
 
     /**
@@ -54,7 +58,7 @@ class Soy implements Culture
      */
     public function getHumidityPercentageNorm() : float
     {
-        return $this->_humidityPercentageNorm;
+        return $this->humidityPercentageNorm;
     }
 
     /**

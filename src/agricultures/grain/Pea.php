@@ -5,17 +5,21 @@ namespace richweber\duval\calculator\agricultures\grain;
 use richweber\duval\calculator\agricultures\Culture;
 use richweber\duval\calculator\agricultures\CultureException;
 
+/**
+ * Class Pea
+ * @package richweber\duval\calculator\agricultures\grain
+ */
 class Pea implements Culture
 {
     /**
      * @var float
      */
-    private $_trashPercentageNorm;
+    protected $trashPercentageNorm;
 
     /**
      * @var float
      */
-    private $_humidityPercentageNorm;
+    protected $humidityPercentageNorm;
 
     /**
      * Culture constructor.
@@ -35,8 +39,8 @@ class Pea implements Culture
             throw new CultureException('Invalid trash norm');
         }
 
-        $this->_humidityPercentageNorm = $humidityPercentageNorm;
-        $this->_trashPercentageNorm = $trashPercentageNorm;
+        $this->humidityPercentageNorm = $humidityPercentageNorm;
+        $this->trashPercentageNorm = $trashPercentageNorm;
     }
 
     /**
@@ -45,7 +49,7 @@ class Pea implements Culture
      */
     public function getTrashPercentageNorm() : float
     {
-        return $this->_trashPercentageNorm;
+        return $this->trashPercentageNorm;
     }
 
     /**
@@ -54,7 +58,7 @@ class Pea implements Culture
      */
     public function getHumidityPercentageNorm() : float
     {
-        return $this->_humidityPercentageNorm;
+        return $this->humidityPercentageNorm;
     }
 
     /**

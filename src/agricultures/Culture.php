@@ -2,6 +2,10 @@
 
 namespace richweber\duval\calculator\agricultures;
 
+/**
+ * Interface Culture
+ * @package richweber\duval\calculator\agricultures
+ */
 interface Culture
 {
     /**

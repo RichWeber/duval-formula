@@ -2,15 +2,32 @@
 
 namespace richweber\duval\calculator\calculator;
 
+/**
+ * Class GrainQuality
+ * @package richweber\duval\calculator\calculator
+ */
 class GrainQuality
 {
-    private $_humidityPercentage;
-    private $_trashPercentage;
+    /**
+     * @var float
+     */
+    protected $humidityPercentage;
 
+    /**
+     * @var float
+     */
+    protected $trashPercentage;
+
+    /**
+     * GrainQuality constructor.
+     *
+     * @param float $humidityPercentage
+     * @param float $trashPercentage
+     */
     public function __construct(float $humidityPercentage, float $trashPercentage)
     {
-        $this->_humidityPercentage = $humidityPercentage;
-        $this->_trashPercentage = $trashPercentage;
+        $this->humidityPercentage = $humidityPercentage;
+        $this->trashPercentage = $trashPercentage;
     }
 
     /**
@@ -18,7 +35,7 @@ class GrainQuality
      */
     public function getHumidityPercentage() : float
     {
-        return $this->_humidityPercentage;
+        return $this->humidityPercentage;
     }
 
     /**
@@ -26,6 +43,6 @@ class GrainQuality
      */
     public function getTrashPercentage() : float
     {
-        return $this->_trashPercentage;
+        return $this->trashPercentage;
     }
 }

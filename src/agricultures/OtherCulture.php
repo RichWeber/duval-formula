@@ -2,17 +2,21 @@
 
 namespace richweber\duval\calculator\agricultures;
 
+/**
+ * Class OtherCulture
+ * @package richweber\duval\calculator\agricultures
+ */
 class OtherCulture implements Culture
 {
     /**
      * @var float
      */
-    private $_trashPercentageNorm;
+    protected $trashPercentageNorm;
 
     /**
      * @var float
      */
-    private $_humidityPercentageNorm;
+    protected $humidityPercentageNorm;
 
     /**
      * Culture constructor.
@@ -32,8 +36,8 @@ class OtherCulture implements Culture
             throw new CultureException('Invalid trash norm');
         }
 
-        $this->_humidityPercentageNorm = $humidityPercentageNorm;
-        $this->_trashPercentageNorm = $trashPercentageNorm;
+        $this->humidityPercentageNorm = $humidityPercentageNorm;
+        $this->trashPercentageNorm = $trashPercentageNorm;
     }
 
     /**
@@ -42,7 +46,7 @@ class OtherCulture implements Culture
      */
     public function getTrashPercentageNorm() : float
     {
-        return $this->_trashPercentageNorm;
+        return $this->trashPercentageNorm;
     }
 
     /**
@@ -51,7 +55,7 @@ class OtherCulture implements Culture
      */
     public function getHumidityPercentageNorm() : float
     {
-        return $this->_humidityPercentageNorm;
+        return $this->humidityPercentageNorm;
     }
 
     /**

@@ -4,7 +4,11 @@ namespace richweber\duval\calculator\calculator;
 
 use richweber\duval\calculator\agricultures\Culture;
 
-class Calculator
+/**
+ * Class Calculator
+ * @package richweber\duval\calculator\calculator
+ */
+final class Calculator
 {
     /**
      * @var Culture
