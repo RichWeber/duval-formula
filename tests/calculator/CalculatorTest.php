@@ -9,6 +9,7 @@ use richweber\duval\calculator\agricultures\grain\Wheat;
 use richweber\duval\calculator\agricultures\oil\Colza;
 use richweber\duval\calculator\agricultures\oil\Soy;
 use richweber\duval\calculator\agricultures\oil\Sunflower;
+use richweber\duval\calculator\agricultures\OtherCulture;
 use richweber\duval\calculator\calculator\Calculator;
 use richweber\duval\calculator\calculator\GrainQuality;
 
@@ -20,6 +21,9 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(30000, $calculator->getStartWeight());
         $this->assertEquals(2045.46, $calculator->getLostWeight());
         $this->assertEquals(27954.54, $calculator->getFinishWeight());
+
+        $this->assertEquals(6.8182, $calculator->getHumidityCoefficient());
+        $this->assertEquals(0, $calculator->getTrashCoefficient());
     }
 
     public function testWheat()
@@ -28,6 +32,9 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(10000, $calculator->getStartWeight());
         $this->assertEquals(479.04, $calculator->getLostWeight());
         $this->assertEquals(9520.96, $calculator->getFinishWeight());
+
+        $this->assertEquals(2.093, $calculator->getHumidityCoefficient());
+        $this->assertEquals(2.6974, $calculator->getTrashCoefficient());
     }
 
     public function testBarley()
@@ -36,6 +43,9 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(10000, $calculator->getStartWeight());
         $this->assertEquals(479.04, $calculator->getLostWeight());
         $this->assertEquals(9520.96, $calculator->getFinishWeight());
+
+        $this->assertEquals(2.093, $calculator->getHumidityCoefficient());
+        $this->assertEquals(2.6974, $calculator->getTrashCoefficient());
     }
 
     public function testCorn()
@@ -44,6 +54,9 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(10000, $calculator->getStartWeight());
         $this->assertEquals(479.04, $calculator->getLostWeight());
         $this->assertEquals(9520.96, $calculator->getFinishWeight());
+
+        $this->assertEquals(2.093, $calculator->getHumidityCoefficient());
+        $this->assertEquals(2.6974, $calculator->getTrashCoefficient());
     }
 
     public function testPea()
@@ -52,6 +65,9 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(10000, $calculator->getStartWeight());
         $this->assertEquals(479.04, $calculator->getLostWeight());
         $this->assertEquals(9520.96, $calculator->getFinishWeight());
+
+        $this->assertEquals(2.093, $calculator->getHumidityCoefficient());
+        $this->assertEquals(2.6974, $calculator->getTrashCoefficient());
     }
 
     public function testColza()
@@ -60,6 +76,9 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(10000, $calculator->getStartWeight());
         $this->assertEquals(1099.98, $calculator->getLostWeight());
         $this->assertEquals(8900.02, $calculator->getFinishWeight());
+
+        $this->assertEquals(8.4783, $calculator->getHumidityCoefficient());
+        $this->assertEquals(2.5215, $calculator->getTrashCoefficient());
     }
 
     public function testSunflower()
@@ -68,5 +87,30 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(10000, $calculator->getStartWeight());
         $this->assertEquals(1008.23, $calculator->getLostWeight());
         $this->assertEquals(8991.77, $calculator->getFinishWeight());
+
+        $this->assertEquals(8.4783, $calculator->getHumidityCoefficient());
+        $this->assertEquals(1.604, $calculator->getTrashCoefficient());
+    }
+
+    public function testSunflowerCustom()
+    {
+        $calculator = new Calculator(new Sunflower(7, 2), new GrainQuality(15.8, 4.7), 10000);
+        $this->assertEquals(10000, $calculator->getStartWeight());
+        $this->assertEquals(1195.68, $calculator->getLostWeight());
+        $this->assertEquals(8804.32, $calculator->getFinishWeight());
+
+        $this->assertEquals(9.4624, $calculator->getHumidityCoefficient());
+        $this->assertEquals(2.4944, $calculator->getTrashCoefficient());
+    }
+
+    public function testOtherCulture()
+    {
+        $calculator = new Calculator(new OtherCulture(), new GrainQuality(15.8, 4.7), 10000);
+        $this->assertEquals(10000, $calculator->getStartWeight());
+        $this->assertEquals(1974.14, $calculator->getLostWeight());
+        $this->assertEquals(8025.86, $calculator->getFinishWeight());
+
+        $this->assertEquals(15.7916, $calculator->getHumidityCoefficient());
+        $this->assertEquals(3.9498, $calculator->getTrashCoefficient());
     }
 } 

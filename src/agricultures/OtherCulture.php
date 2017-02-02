@@ -1,11 +1,8 @@
 <?php
 
-namespace richweber\duval\calculator\agricultures\oil;
+namespace richweber\duval\calculator\agricultures;
 
-use richweber\duval\calculator\agricultures\Culture;
-use richweber\duval\calculator\agricultures\CultureException;
-
-class Colza implements Culture
+class OtherCulture implements Culture
 {
     /**
      * @var float
@@ -25,7 +22,7 @@ class Colza implements Culture
      *
      * @throws \richweber\duval\calculator\agricultures\CultureException
      */
-    public function __construct(float $humidityPercentageNorm = 8.0, float $trashPercentageNorm = 2.0)
+    public function __construct(float $humidityPercentageNorm = 0.01, float $trashPercentageNorm = 0.01)
     {
         if ($humidityPercentageNorm < 0.01 || $humidityPercentageNorm > 100) {
             throw new CultureException('Invalid humidity norm');

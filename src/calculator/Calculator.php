@@ -27,6 +27,16 @@ class Calculator
     private $_finishWeight;
 
     /**
+     * @var float
+     */
+    private $_trashCoefficient;
+
+    /**
+     * @var float
+     */
+    private $_humidityCoefficient;
+
+    /**
      * Calculator constructor.
      *
      * @param Culture $culture
@@ -86,6 +96,8 @@ class Calculator
             / (100 - $this->_culture->getTrashPercentageNorm());
         $result = round($result, 4);
 
+        $this->_trashCoefficient = $result;
+
         return $result;
     }
 
@@ -98,6 +110,24 @@ class Calculator
             / (100 - $this->_culture->getHumidityPercentageNorm());
         $result = round($result, 4);
 
+        $this->_humidityCoefficient = $result;
+
         return $result;
+    }
+
+    /**
+     * @return float
+     */
+    public function getTrashCoefficient() : float
+    {
+        return $this->_trashCoefficient;
+    }
+
+    /**
+     * @return float
+     */
+    public function getHumidityCoefficient() : float
+    {
+        return $this->_humidityCoefficient;
     }
 }
