@@ -113,4 +113,29 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(15.7916, $calculator->getHumidityCoefficient());
         $this->assertEquals(3.9498, $calculator->getTrashCoefficient());
     }
+
+    public function testGetLostWeightByHumidity()
+    {
+        $calculator = new Calculator(new Soy(), new GrainQuality(13, 2), 10000);
+        $this->assertEquals(113.64, $calculator->getLostWeightByHumidity());
+        $this->assertEquals(0, $calculator->getLostWeightByTrash());
+    }
+
+    public function testGetLostWeightByTrash()
+    {
+        $calculator = new Calculator(new Soy(), new GrainQuality(12, 3), 10000);
+        $this->assertEquals(102.04, $calculator->getLostWeightByTrash());
+        $this->assertEquals(0, $calculator->getLostWeightByHumidity());
+    }
+
+    public function testGetLostWeightByParams()
+    {
+        $calculator = new Calculator(new Soy(), new GrainQuality(13, 3), 10000);
+        $this->assertEquals(100.88, $calculator->getLostWeightByTrash());
+        $this->assertEquals(113.64, $calculator->getLostWeightByHumidity());
+
+        $total = round($calculator->getLostWeightByTrash() + $calculator->getLostWeightByHumidity(), 2);
+        $this->assertEquals(214.52, $calculator->getLostWeight());
+        $this->assertEquals($total, $calculator->getLostWeight());
+    }
 } 

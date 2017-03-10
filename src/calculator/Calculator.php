@@ -58,7 +58,7 @@ final class Calculator
     /**
      * @return int
      */
-    public function getStartWeight(): int
+    public function getStartWeight() : int
     {
         return $this->_startWeight;
     }
@@ -66,7 +66,7 @@ final class Calculator
     /**
      * @return float
      */
-    public function getFinishWeight()
+    public function getFinishWeight() : float
     {
         return $this->_finishWeight;
     }
@@ -74,9 +74,27 @@ final class Calculator
     /**
      * @return float
      */
-    public function getLostWeight()
+    public function getLostWeight() : float
     {
         return round($this->_startWeight - $this->_finishWeight, 2);
+    }
+
+    /**
+     * @return float
+     */
+    public function getLostWeightByHumidity() : float
+    {
+        $result = $this->_startWeight - ($this->_startWeight * ($this->getHumidityReduction() / 100));
+        return round($this->_startWeight - $result, 4);
+    }
+
+    /**
+     * @return float
+     */
+    public function getLostWeightByTrash() : float
+    {
+        $result = $this->_startWeight - ($this->_startWeight * ($this->getTrashReduction() / 100));
+        return round($this->_startWeight - $result, 4);
     }
 
     /**
